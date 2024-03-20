@@ -14,13 +14,13 @@ const About = () => {
   return (
     <div>
       <SectionTitle title="About" />
-      <div className="flex items-center text-white">
+      <div className="flex items-center text-white sm:flex-col">
         <div className="h-[70vh] w-1/2">
           <dotlottie-player
             src="https://lottie.host/ea1c0b7b-0fb0-4425-917a-e26e96da411e/4rZO5Pvaiy.json"
             background="transparent"></dotlottie-player>
         </div>
-        <div className="flex-col gap-5 w-1/2">
+        <div className="flex-col gap-5 w-1/2 sm:w-full">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
             corporis nisi! Vitae, perspiciatis voluptate suscipit rerum aliquam
