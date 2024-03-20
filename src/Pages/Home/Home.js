@@ -1,10 +1,14 @@
 import Header from "../../component/Header";
 import Intro from "./Intro";
+import About from "./About"; 
 const Home = () => {
   return (
-    <div className="bg-Primary px-40 h-screen ">
+    <div className=" bg-Primary ">
       <Header />
-      <Intro />
+      <div className=" px-40 sm:px-4">
+        <Intro />
+        <About />
+      </div>
     </div>
   );
 };
