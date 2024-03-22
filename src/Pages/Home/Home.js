@@ -3,6 +3,8 @@ import Intro from "./Intro";
 import About from "./About"; 
 import Experience from "./Experience";
 import Project from "./Project";
+import Contact from "./Contact";
+import Footer from "./Footer";
 const Home = () => {
   return (
     <div className=" bg-Primary ">
@@ -12,6 +14,8 @@ const Home = () => {
         <About />
         <Experience/>
         <Project/>
+        <Contact/>
+        <Footer/>
       </div>
     </div>
   );
