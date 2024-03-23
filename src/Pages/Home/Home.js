@@ -5,6 +5,7 @@ import Experience from "./Experience";
 import Project from "./Project";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import LeftSider from "./LeftSider";
 const Home = () => {
   return (
     <div className=" bg-Primary ">
@@ -16,6 +17,7 @@ const Home = () => {
         <Project/>
         <Contact/>
         <Footer/>
+        <LeftSider/>
       </div>
     </div>
   );
