@@ -1,10 +1,11 @@
 import { useState } from "react";
 import SectionTitle from "../../component/SectionTitle";
-import { project } from "../../resources/project";
-
+import { useSelector } from "react-redux";
 
 const Project = () => {
   const [selected, setselected] = useState(0);
+  const { portfolioData } = useSelector((state) => state.root);
+  const { project } = portfolioData;
   return (
     <div>
       <SectionTitle title="Project" />
@@ -12,7 +13,7 @@ const Project = () => {
         <div className="flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-col sm:overflow-x-scroll sm:w-full">
           {project.map((project, index) => (
             <div
-              key={index}
+              key={project._id}
               className="cursor-pointer "
               onClick={() => {
                 setselected(index);
@@ -29,13 +30,19 @@ const Project = () => {
           ))}
         </div>
         <div className="flex items-center justify-center gap-10 sm:flex-col ">
-          <img src={project[selected].image} alt="images" className="h-50 w-64"/>
+          <img
+            src={project[selected].imgUrl}
+            alt="images"
+            className="h-50 w-64"
+          />
           <div className="flex flex-col gap-5 ">
             <h1 className="text-btncol text-2xl">{project[selected].title}</h1>
             <h1 className="text-btncol text-2xl">
-              {"Tech Stack: " + project[selected].tech.join(", ")}
+              {"Tech Stack: " + project[selected].techStack.join(", ")}
             </h1>
-            <h1 className="text-btncol text-2xl">{project[selected].desc}</h1>
+            <h1 className="text-btncol text-2xl">
+              {project[selected].description}
+            </h1>
           </div>
         </div>
       </div>

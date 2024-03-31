@@ -15,7 +15,7 @@ const LeftSider = () => {
             <BiLogoGmail size={22} />
           </a>
           <a
-            lassName="cursor-pointer hover:text-white"
+            className="cursor-pointer hover:text-white"
             href="https://www.linkedin.com/in/ankita-soni-75a5011a4"
             target="_blank"
             rel="noreferrer">
