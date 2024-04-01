@@ -5,8 +5,8 @@ import { setportfolioData } from "./redux/rootSlice";
 import Loader from "./Pages/Home/Loader";
 import axios from "axios";
 import Home from "./Pages/Home/Home";
-import  Admin from '../src/Pages/Admin/Admin' ;
-import 'antd/dist/antd.min.css';
+import Admin from "../src/Pages/Admin/Admin";
+
 
 function App() {
   const { loading, portfolioData } = useSelector((state) => state.root);
@@ -32,7 +32,7 @@ function App() {
       {loading ? <Loader /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/admin" element={Admin}/>
+        <Route path="/admin" element={<Admin/>} />
       </Routes>
     </BrowserRouter>
   );

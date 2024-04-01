@@ -12,8 +12,8 @@ const Contact = () => {
       <div className="flex items-center justify-between sm:flex-col ">
         <div className=" flex flex-col gap-1 ml-10 text-white">
           <h1>{"{"}</h1>
-          {Object.keys(contact).map((key) => (
-            <h1 className="ml-5">
+          {Object.keys(contact).map((key,index) => (
+            <h1 className="ml-5" key={index}>
               <span>{key}</span>: <span>{contact[key]}</span>
             </h1>
           ))}
