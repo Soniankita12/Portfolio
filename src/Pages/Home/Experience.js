@@ -24,16 +24,18 @@ const Experience = () => {
                     ? `text-btncol py-3  border-btncol border-l-4 -ml-[3px] bg-[#1a7f5a31] sm:w-40`
                     : `text-white`
                 }`}>
-                {experience.Period}
+                {experience.period}
               </h1>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-5 ">
-          <h1 className="text-btncol text-2xl">{experience[selected].title}</h1>
           <h1 className="text-btncol text-2xl">
-            {experience[selected].company}
+            {experience[selected].title}
+            {"@ "} {experience[selected].company}
           </h1>
+
+          <p className="text-white">{experience[selected].description}</p>
         </div>
       </div>
     </div>

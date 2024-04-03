@@ -69,7 +69,7 @@ const AdminAbout = () => {
           <TextArea rows={3} placeholder="write skills here" />
         </Form.Item>
         <div className="flex justify-end">
-          <button type="submit" className="px-10 py-2 bg-blue-600 rounded-lg">
+          <button type="submit" className="px-10 py-2 bg-blue-600 text-white rounded-lg">
             Save
           </button>
         </div>

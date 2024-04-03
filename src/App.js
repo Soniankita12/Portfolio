@@ -7,9 +7,10 @@ import axios from "axios";
 import Home from "./Pages/Home/Home";
 import Admin from "../src/Pages/Admin/Admin";
 
-
 function App() {
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { loading, portfolioData, reloadData, ReloadData } = useSelector(
+    (state) => state.root
+  );
   const dispatch = useDispatch();
 
   const getPortfolioData = async () => {
@@ -17,22 +18,26 @@ function App() {
       const response = await axios.get("/api/portfolio/get-portfolio-data");
       dispatch(setportfolioData(response.data));
       console.log("data", response);
+      dispatch(ReloadData(false));
     } catch (error) {}
   };
 
   useEffect(() => {
     getPortfolioData();
-  }, []);
+  }, [portfolioData]);
 
   useEffect(() => {
-    console.log("portfoliodata", portfolioData);
-  }, [portfolioData]);
+    if (reloadData) {
+      getPortfolioData();
+    }
+  }, [reloadData]);
+
   return (
     <BrowserRouter>
       {loading ? <Loader /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin/>} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

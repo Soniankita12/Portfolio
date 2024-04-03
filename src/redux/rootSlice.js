@@ -1,7 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 const rootSlice = createSlice({
   name: "root",
-  initialState: { loading: false, portfolioData: null },
+  initialState: { loading: false, portfolioData: null, reloadData: false },
   reducers: {
     showLoading: (state, action) => {
       state.loading = true;
@@ -12,7 +12,11 @@ const rootSlice = createSlice({
     setportfolioData: (state, action) => {
       state.portfolioData = action.payload;
     },
+    ReloadData: (state, action) => {
+      state.reloadData = action.payload;
+    },
   },
 });
 export default rootSlice.reducer;
-export const { showLoading, hideLoading, setportfolioData } = rootSlice.actions;
+export const { showLoading, hideLoading, setportfolioData, ReloadData } =
+  rootSlice.actions;

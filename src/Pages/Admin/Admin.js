@@ -3,13 +3,14 @@ import AdminIntro from "./AdminIntro";
 import AdminAbout from "./AdminAbout";
 import { useSelector } from "react-redux";
 import { Tabs } from "antd";
-import AdminExp from './AdminExp';
+import AdminExp from "./AdminExp";
+import AdminProject from "./AdminProject";
 
 const Admin = () => {
   const { portfolioData } = useSelector((state) => state.root);
   return (
     <div>
-      <Header />{" "}
+      <Header />
       {portfolioData && (
         <div className="m-2 p-4 text-3xl">
           <Tabs
@@ -28,7 +29,12 @@ const Admin = () => {
               {
                 label: "Experiences",
                 key: "3",
-                children: <AdminExp/>,
+                children: <AdminExp />,
+              },
+              {
+                label: "Projects",
+                key: "4",
+                children: <AdminProject />,
               },
             ]}
           />
