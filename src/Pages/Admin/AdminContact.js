@@ -4,16 +4,15 @@ import { hideLoading, showLoading } from "../../redux/rootSlice";
 import axios from "axios";
 import { message } from "antd";
 
-const AdminIntro = () => {
+const AdminContact = () => {
   const dispatch = useDispatch();
-  const { TextArea } = Input;
   const { portfolioData } = useSelector((state) => state.root);
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("api/portfolio/update-intro", {
+      const response = await axios.post("api/portfolio/update-contact", {
         ...values,
-        _id: portfolioData.intro._id,
+        _id: portfolioData.contact._id,
       });
       dispatch(hideLoading());
       if (response.data.success) {
@@ -30,42 +29,28 @@ const AdminIntro = () => {
     <div className="mx-10">
       <Form
         onFinish={onFinish}
-        initialValues={portfolioData?.intro}
+        initialValues={portfolioData?.contact}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}>
         <Form.Item
-          label="Welcome Text"
-          name="welcomeText"
+          label="Name"
+          name="name"
           rules={[
             { required: true, message: "Please input your welcomeText!" },
           ]}>
-          <Input placeholder="write welcomeText here" />
+          <Input placeholder="write name here" />
         </Form.Item>
         <Form.Item
-          label="First Name "
-          name="firstName"
-          rules={[{ required: true, message: "Please input your firstName!" }]}>
-          <Input placeholder="write firstName here" />
+          label="Email "
+          name="email"
+          rules={[{ required: true, message: "Please input your email!" }]}>
+          <Input placeholder="write email here" />
         </Form.Item>
         <Form.Item
-          label="Last Name "
-          name="lastName"
-          rules={[{ required: true, message: "Please input your lastName!" }]}>
-          <Input placeholder="write lastName here" />
-        </Form.Item>
-        <Form.Item
-          label="Caption "
-          name="caption"
-          rules={[{ required: true, message: "Please input your caption!" }]}>
-          <Input placeholder="write caption here" />
-        </Form.Item>
-        <Form.Item
-          label="Description "
-          name="description"
-          rules={[
-            { required: true, message: "Please input your description!" },
-          ]}>
-          <TextArea rows={10} placeholder="write description here" />
+          label="Location "
+          name="location"
+          rules={[{ required: true, message: "Please input your location!" }]}>
+          <Input rows={10} placeholder="write location here" />
         </Form.Item>
         <div className="flex justify-end">
           <button
@@ -79,4 +64,4 @@ const AdminIntro = () => {
   );
 };
 
-export default AdminIntro;
+export default AdminContact;

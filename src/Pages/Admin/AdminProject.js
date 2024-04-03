@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, ReloadData, showLoading } from "../../redux/rootSlice";
 import axios from "axios";
 import { Modal, Form, Input, message } from "antd";
+import { FaLink } from "react-icons/fa";
 
 const AdminProject = () => {
+  const [form] = Form.useForm();
   const { TextArea } = Input;
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
@@ -15,6 +17,8 @@ const AdminProject = () => {
 
   const onFinish = async (values) => {
     try {
+      const tempTechStack = values.techStack.split(",");
+      values.techStack = tempTechStack;
       dispatch(showLoading());
       let response;
       if (selectedIteForEdit) {
@@ -31,6 +35,7 @@ const AdminProject = () => {
         message.success(response.data.message);
         setshowAddEditModel(false);
         setselectedIteForEdit(null);
+        form.resetFields();
         dispatch(hideLoading());
         dispatch(ReloadData(true));
       } else {
@@ -77,12 +82,23 @@ const AdminProject = () => {
       <div className="grid grid-cols-3 gap-10 sm:grid sm:grid-cols-1">
         {project.map((project) => (
           <div className="shadow border p-2" key={project._id}>
-            <h1 className="text-blue-600 font-bold text-3xl">
-              {project.title}
-            </h1>
+            <div className="flex justify-between items-center my-3 text-blue-800 font-bold ">
+              <h1 className="  text-3xl">{project.title}</h1>
+              <button className="border-3  py-2 px-6 rounded-lg ">
+                <a
+                  className="flex gap-1 cursor-pointer hover:text-white"
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer">
+                  Link
+                  <FaLink size={20} />
+                </a>
+              </button>
+            </div>
+
             <hr />
             <img
-              className="h-62 w-80"
+              className="h-62 w-80 rounded-lg"
               alt={project.title + "pic"}
               src={project.imgUrl}
             />
@@ -119,9 +135,11 @@ const AdminProject = () => {
           open={showAddEditModel}
           onCancel={() => {
             setshowAddEditModel(false);
+            setselectedIteForEdit(null);
           }}
           footer={null}>
           <Form
+            form={form}
             onFinish={onFinish}
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -174,6 +192,8 @@ const AdminProject = () => {
                 className="px-10 py-2 bg-red-600 rounded-lg text-white"
                 onClick={() => {
                   setshowAddEditModel(false);
+                  setselectedIteForEdit(null);
+                  form.resetFields();
                 }}>
                 cancel
               </button>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Modal, Form, Input, message } from "antd";
 
 const AdminExp = () => {
+ const [form] = Form.useForm();
   const { TextArea } = Input;
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
@@ -31,6 +32,7 @@ const AdminExp = () => {
         message.success(response.data.message);
         setshowAddEditModel(false);
         setselectedIteForEdit(null);
+        form.resetFields();
         dispatch(hideLoading());
         dispatch(ReloadData(true));
       } else {
@@ -117,6 +119,7 @@ const AdminExp = () => {
           }}
           footer={null}>
           <Form
+            form={form}
             onFinish={onFinish}
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -156,10 +159,14 @@ const AdminExp = () => {
                 className="px-10 py-2 bg-red-600 rounded-lg text-white"
                 onClick={() => {
                   setshowAddEditModel(false);
+                  setselectedIteForEdit(null);
+                  form.resetFields();
                 }}>
                 cancel
               </button>
-              <button type="submit" className="px-10 py-2 bg-blue-600  text-white rounded-lg">
+              <button
+                type="submit"
+                className="px-10 py-2 bg-blue-600  text-white rounded-lg">
                 {selectedIteForEdit ? "Update" : "Add"}
               </button>
             </div>
