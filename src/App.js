@@ -6,6 +6,7 @@ import Loader from "./Pages/Home/Loader";
 import axios from "axios";
 import Home from "./Pages/Home/Home";
 import Admin from "../src/Pages/Admin/Admin";
+import Login from "./Pages/Admin/Login";
 
 function App() {
   const { loading, portfolioData, reloadData, ReloadData } = useSelector(
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin-login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

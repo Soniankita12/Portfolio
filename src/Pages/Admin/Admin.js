@@ -6,16 +6,31 @@ import { Tabs } from "antd";
 import AdminExp from "./AdminExp";
 import AdminProject from "./AdminProject";
 import AdminContact from "./AdminContact";
+import { useEffect } from "react";
 
 const Admin = () => {
   const { portfolioData } = useSelector((state) => state.root);
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      window.location.href = "/admin-login";
+    }
+  }, []);
   return (
     <div>
       <Header />
-      <h1 className="text-2xl text-blue-800 font-bold text-center m-2">
-        Admin Dashboard
-      </h1>
-      <hr/>
+      <div className="flex justify-between m-4">
+        <h1 className="text-2xl text-blue-800 font-bold text-center m-2">
+          Admin Dashboard
+        </h1>
+        <h1 className="cursor-pointer flex border-2 items-center  px-5 rounded-lg  border-red-500 text-red-500 font-bold"onClick={()=>{
+          localStorage.removeItem('token');
+          window.location.href ="/admin-login"
+        }}>
+          Logout
+        </h1>
+      </div>
+
+      <hr />
       {portfolioData && (
         <div className="mx-2 p-2 text-3xl ">
           <Tabs
