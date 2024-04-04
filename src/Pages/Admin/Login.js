@@ -40,7 +40,7 @@ const Login = () => {
           type="text"
           value={user.userName}
           onChange={(e) => setuser({ ...user, userName: e.target.value })}
-        />
+        />̥
         <input
           className="p-2 border"
           placeholder="Password"
